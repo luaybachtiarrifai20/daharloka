@@ -12,6 +12,7 @@ import img9 from '@/assets/images/IMG-20260217-WA0026.jpg';
 import img10 from '@/assets/images/IMG-20260217-WA0027.jpg';
 import img11 from '@/assets/images/IMG-20260217-WA0028.jpg';
 import img12 from '@/assets/images/IMG-20260217-WA0029.jpg';
+import img13 from '@/assets/images/IMG-20260217-WA0030.jpg';
 
 // Define categories with specific items as requested
 export const menuCategories = [
@@ -198,6 +199,21 @@ export const menuCategories = [
       }
     ]
   },
+  {
+  id: 'sahur',
+  name: 'Menu Sahur',
+  image: img13,
+  description: 'Menu sahur harian dengan harga hemat.',
+  groups: [
+    {
+      name: 'Sahoor Special',
+      items: [
+        { name: 'Nasi Ayam Katsu', price: 15000 },
+        { name: 'Nasi Telur (Ceplok/Dadar)', price: 10000 },
+      ]
+    }
+  ]
+},
   {
     id: 'frozen-food',
     name: 'Frozen Food',

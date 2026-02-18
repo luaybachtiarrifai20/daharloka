@@ -298,7 +298,7 @@ export const menuCategories = [
   {
   id: 'frozen-food-4',
   name: 'Frozen Food - Aneka Pempek',
-  image: img11,
+  image: img9,
   description: 'Aneka pempek frozen lengkap dengan cuko.',
   groups: [
     {

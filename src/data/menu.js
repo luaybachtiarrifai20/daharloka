@@ -247,5 +247,36 @@ export const menuCategories = [
         ]
       },
     ]
-  }
+  },
+  {
+  id: 'frozen-food-3',
+  name: 'Frozen Food (Tekwan, Otak-Otak, Siomay)',
+  image: img10,
+  description: 'Frozen food terbaru: Tekwan, Otak-otak Lumpia, dan Siomay Ikan.',
+  groups: [
+    {
+      name: 'Tekwan',
+      items: [
+        { name: 'Tekwan 10pcs/pack', price: 27500 },
+        { name: 'Tekwan 1/2 Kg', price: 67500 },
+        { name: 'Tekwan 1 Kg', price: 107500 },
+      ]
+    },
+    {
+      name: 'Otak-Otak Lumpia',
+      items: [
+        { name: 'Otak-Otak Lumpia Kuah Cuko (8pcs)', price: 32500 },
+        { name: 'Otak-Otak Lumpia Bumbu Kacang (8pcs)', price: 32500 },
+        { name: 'Otak-Otak Lumpia Keju Kuah Cuko (8pcs)', price: 42500 },
+        { name: 'Otak-Otak Lumpia Keju Bumbu Kacang (8pcs)', price: 42500 },
+      ]
+    },
+    {
+      name: 'Siomay Ikan',
+      items: [
+        { name: 'Siomay Ikan Bumbu Kacang (10pcs)', price: 25500 },
+      ]
+    }
+  ]
+},
 ];

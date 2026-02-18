@@ -18,6 +18,7 @@ import img13 from '@/assets/images/IMG-20260217-WA0030.jpg';
 export const menuCategories = [
   {
     id: 'pempek',
+    section: 'snack',
     name: 'Aneka Pempek',
     image: img1,
     description: 'Pempek asli Palembang dengan cuko yang mantap.',
@@ -35,7 +36,8 @@ export const menuCategories = [
   },
   {
     id: 'camilan',
-    name: 'Camilan & Snack',
+    section: 'snack',
+    name: 'Pempek Mix, Tekwan, dan Otak-otak',
     image: img2,
     description: 'Pilihan camilan lezat: Pempek Mix, Tekwan, dan Otak-otak.',
     groups: [
@@ -69,6 +71,7 @@ export const menuCategories = [
   },
   {
     id: 'camilan-2',
+    section: 'snack',
     name: 'Siomay & Dimsum',
     image: img12,
     description: 'Siomay ikan tenggiri asli dan aneka dimsum premium.',
@@ -101,6 +104,7 @@ export const menuCategories = [
   },
   {
     id: 'camilan-3',
+    section: 'snack',
     name: 'Tahu Bakso & Risoles',
     image: img5,
     description: 'Gorengan premium yang cocok untuk takjil atau camilan.',
@@ -127,12 +131,13 @@ export const menuCategories = [
   },
   {
     id: 'makanan-utama',
-    name: 'Makanan Utama',
+    section: 'main',
+    name: 'Nasi Goreng, Spageti, dan Lauk',
     image: img3,
     description: 'Hidangan utama yang mengenyangkan dan lezat.',
     groups: [
       {
-        name: 'Nasi Goreng dan Spageti',
+        name: 'Nasi Goreng & Spageti',
         items: [
           { name: 'Nasi Goreng', price: 10000 },
           { name: 'Nasi Goreng Telur Dadar', price: 12000 },
@@ -161,7 +166,8 @@ export const menuCategories = [
   },
   {
     id: 'makanan-utama-2',
-    name: 'Makanan Utama',
+    section: 'main',
+    name: 'Nasi dan Lauk',
     image: img4,
     description: 'Hidangan utama yang mengenyangkan dan lezat.',
     groups: [
@@ -184,6 +190,7 @@ export const menuCategories = [
   },
   {
     id: 'paket-hemat-buka',
+    section: 'main',
     name: 'Paket Hemat Buka Puasa',
     image: img8,
     description: 'Pilihan tepat untuk makan enak dan hemat saat berbuka puasa.',
@@ -201,6 +208,7 @@ export const menuCategories = [
   },
   {
   id: 'sahur',
+  section: 'main',
   name: 'Menu Sahur',
   image: img13,
   description: 'Menu sahur harian dengan harga hemat.',
@@ -216,7 +224,8 @@ export const menuCategories = [
 },
   {
     id: 'frozen-food',
-    name: 'Frozen Food',
+    section: 'frozen',
+    name: 'Tahu Bakso & Risoles',
     image: img6,
     description: 'Makanan beku yang bisa disimpan dan dihangatkan kapan saja.',
     groups: [
@@ -243,7 +252,8 @@ export const menuCategories = [
   },
   {
     id: 'frozen-food-2',
-    name: 'Frozen Food',
+    section: 'frozen',
+    name: 'Siomay & Dimsum',
     image: img7,
     description: 'Makanan beku yang bisa disimpan dan dihangatkan kapan saja.',
     groups: [
@@ -266,7 +276,8 @@ export const menuCategories = [
   },
   {
   id: 'frozen-food-3',
-  name: 'Frozen Food (Tekwan, Otak-Otak, Siomay)',
+  section: 'frozen',
+  name: 'Tekwan, Otak-Otak, dan Siomay Ikan',
   image: img10,
   description: 'Frozen food terbaru: Tekwan, Otak-otak Lumpia, dan Siomay Ikan.',
   groups: [
@@ -297,7 +308,8 @@ export const menuCategories = [
 },
   {
   id: 'frozen-food-4',
-  name: 'Frozen Food - Aneka Pempek',
+  section: 'frozen',
+  name: 'Aneka Pempek',
   image: img9,
   description: 'Aneka pempek frozen lengkap dengan cuko.',
   groups: [

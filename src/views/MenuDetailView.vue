@@ -23,13 +23,10 @@
           
           <div class="item-actions">
             <div class="qty-selector">
-              <button class="qty-btn" @click="adjustQty(item, -1)" :disabled="getQty(item) <= 1">-</button>
+              <button class="qty-btn" @click="adjustQty(item, -1)" :disabled="getQty(item) <= 0">-</button>
               <span class="qty">{{ getQty(item) }}</span>
               <button class="qty-btn" @click="adjustQty(item, 1)">+</button>
             </div>
-            <button class="btn btn-sm btn-add" @click="handleAddToCart(item)">
-              Tambah
-            </button>
           </div>
         </div>
       </div>
@@ -47,17 +44,27 @@
               
               <div class="item-actions">
                 <div class="qty-selector">
-                  <button class="qty-btn" @click="adjustQty(item, -1)" :disabled="getQty(item) <= 1">-</button>
+                  <button class="qty-btn" @click="adjustQty(item, -1)" :disabled="getQty(item) <= 0">-</button>
                   <span class="qty">{{ getQty(item) }}</span>
                   <button class="qty-btn" @click="adjustQty(item, 1)">+</button>
                 </div>
-                <button class="btn btn-sm btn-add" @click="handleAddToCart(item)">
-                  Tambah
-                </button>
               </div>
             </div>
           </div>
         </div>
+      </div>
+    </div>
+    
+    <!-- Bulk Add Sticky Footer -->
+    <div class="bulk-add-footer" v-if="totalSelectedItems > 0">
+      <div class="container footer-inner">
+        <div class="selection-info">
+          <span class="item-count">{{ totalSelectedItems }} Item</span>
+          <span class="total-price">{{ formatPrice(totalSelectedPrice) }}</span>
+        </div>
+        <button class="btn btn-add-bulk" @click="handleBulkAdd">
+          Tambah ke Keranjang
+        </button>
       </div>
     </div>
     
@@ -70,11 +77,12 @@
 
 <script setup>
 import { computed, reactive } from 'vue';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import { menuCategories } from '@/data/menu';
 import { useCart } from '@/stores/cart';
 
 const route = useRoute();
+const router = useRouter();
 const categoryId = route.params.id;
 const { addToCart, formatPrice } = useCart();
 
@@ -86,23 +94,62 @@ const category = computed(() => {
 });
 
 const getQty = (item) => {
-  return itemQuantities[item.name] || 1;
+  return itemQuantities[item.name] || 0;
 };
 
 const adjustQty = (item, change) => {
   const current = getQty(item);
   const newValue = current + change;
-  if (newValue >= 1) {
+  if (newValue >= 0) {
     itemQuantities[item.name] = newValue;
   }
 };
 
-const handleAddToCart = (item) => {
-  const qty = getQty(item);
-  addToCart(item, qty);
-  // Reset functionality if desired, or keep it.
-  itemQuantities[item.name] = 1; 
-  // Optional: Show feedback
+const totalSelectedItems = computed(() => {
+  return Object.values(itemQuantities).reduce((sum, qty) => sum + qty, 0);
+});
+
+const totalSelectedPrice = computed(() => {
+  let total = 0;
+  // Iterate through all items to calculate price
+  if (category.value) {
+    // Helper to process items
+    const processItems = (items) => {
+      items.forEach(item => {
+        const qty = itemQuantities[item.name] || 0;
+        total += item.price * qty;
+      });
+    };
+
+    if (category.value.items) processItems(category.value.items);
+    if (category.value.groups) {
+      category.value.groups.forEach(group => processItems(group.items));
+    }
+  }
+  return total;
+});
+
+const handleBulkAdd = () => {
+  if (category.value) {
+    const processItems = (items) => {
+      items.forEach(item => {
+        const qty = itemQuantities[item.name] || 0;
+        if (qty > 0) {
+          addToCart(item, qty);
+          itemQuantities[item.name] = 0; // Reset after adding
+        }
+      });
+    };
+
+    if (category.value.items) processItems(category.value.items);
+    if (category.value.groups) {
+      category.value.groups.forEach(group => processItems(group.items));
+    }
+    
+    // Optional: Open cart or show feedback
+    // const { toggleCart } = useCart(); 
+    // toggleCart(); 
+  }
 };
 </script>
 
@@ -257,5 +304,50 @@ const handleAddToCart = (item) => {
   margin-bottom: 20px;
   padding-bottom: 10px;
   border-bottom: 2px solid var(--secondary-color);
+}
+
+.bulk-add-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: var(--white);
+  box-shadow: 0 -5px 15px rgba(0,0,0,0.1);
+  padding: 15px 0;
+  z-index: 1000;
+  animation: slideUp 0.3s ease-out;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.selection-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.item-count {
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.total-price {
+  font-weight: 700;
+  color: var(--primary-color);
+  font-size: 1.2rem;
+}
+
+.btn-add-bulk {
+  padding: 12px 30px;
+  font-size: 1.1rem;
+  border-radius: 30px;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
 }
 </style>

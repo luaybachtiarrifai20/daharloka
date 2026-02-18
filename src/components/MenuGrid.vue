@@ -1,32 +1,77 @@
 <template>
   <section class="menu-section" id="menu">
     <div class="container">
-      <div class="section-title">
-        <h2>Menu <span class="highlight">Favorit</span></h2>
-        <p>Pilihan hidangan terbaik untuk menemani momen spesial Anda.</p>
-      </div>
-      
-      <div class="menu-grid">
-        <div v-for="category in menuCategories" :key="category.id" class="menu-item" @click="goToDetail(category.id)">
-          <div class="image-wrapper">
-            <img :src="category.image" :alt="category.name" loading="lazy">
-          </div>
-          <div class="menu-info">
-            <h3>{{ category.name }}</h3>
-            <p class="description">{{ category.description }}</p>
-            <button class="btn btn-sm">Lihat Menu</button>
+      <!-- Makanan Utama -->
+      <div class="category-section" v-if="mainCourses.length > 0">
+        <div class="main-title">
+          <h2>Makanan <span class="highlight">Utama</span></h2>
+        </div>
+        <div class="menu-grid">
+          <div v-for="category in mainCourses" :key="category.id" class="menu-item" @click="goToDetail(category.id)">
+            <div class="image-wrapper">
+              <img :src="category.image" :alt="category.name" loading="lazy">
+            </div>
+            <div class="menu-info">
+              <h3>{{ category.name }}</h3>
+              <p class="description">{{ category.description }}</p>
+              <button class="btn btn-sm">Lihat Menu</button>
+            </div>
           </div>
         </div>
       </div>
+
+      <!-- Camilan -->
+      <div class="category-section" v-if="snacks.length > 0">
+        <div class="main-title">
+          <h2>Camilan dan <span class="highlight">Snack</span></h2>
+        </div>
+        <div class="menu-grid">
+          <div v-for="category in snacks" :key="category.id" class="menu-item" @click="goToDetail(category.id)">
+            <div class="image-wrapper">
+              <img :src="category.image" :alt="category.name" loading="lazy">
+            </div>
+            <div class="menu-info">
+              <h3>{{ category.name }}</h3>
+              <p class="description">{{ category.description }}</p>
+              <button class="btn btn-sm">Lihat Menu</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Frozen Food -->
+      <div class="category-section" v-if="frozenFoods.length > 0">
+        <div class="main-title">
+          <h2>Frozen <span class="highlight">Food</span></h2>
+        </div>
+        <div class="menu-grid">
+          <div v-for="category in frozenFoods" :key="category.id" class="menu-item" @click="goToDetail(category.id)">
+            <div class="image-wrapper">
+              <img :src="category.image" :alt="category.name" loading="lazy">
+            </div>
+            <div class="menu-info">
+              <h3>{{ category.name }}</h3>
+              <p class="description">{{ category.description }}</p>
+              <button class="btn btn-sm">Lihat Menu</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 </template>
 
 <script setup>
+import { computed } from 'vue';
 import { useRouter } from 'vue-router';
 import { menuCategories } from '@/data/menu';
 
 const router = useRouter();
+
+const mainCourses = computed(() => menuCategories.filter(c => c.section === 'main'));
+const snacks = computed(() => menuCategories.filter(c => c.section === 'snack'));
+const frozenFoods = computed(() => menuCategories.filter(c => c.section === 'frozen'));
 
 const goToDetail = (id) => {
   router.push({ name: 'menu-detail', params: { id } });
@@ -39,21 +84,31 @@ const goToDetail = (id) => {
   background-color: var(--background-color);
 }
 
-/* ... */
-
-.section-title {
+.main-title {
   text-align: center;
-  margin-bottom: 50px;
+  margin-bottom: 60px;
 }
 
-.section-title h2 {
-  font-size: 2.5rem;
+.main-title h2 {
+  font-size: 3rem;
   margin-bottom: 10px;
   color: var(--text-color);
 }
 
 .highlight {
   color: var(--primary-color);
+}
+
+.category-section {
+  margin-bottom: 60px;
+}
+
+.section-subtitle {
+  font-size: 2rem;
+  color: var(--primary-color);
+  margin-bottom: 30px;
+  border-left: 5px solid var(--secondary-color);
+  padding-left: 15px;
 }
 
 .menu-grid {

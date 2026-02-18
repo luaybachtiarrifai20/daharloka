@@ -295,4 +295,39 @@ export const menuCategories = [
     }
   ]
 },
+  {
+  id: 'frozen-food-4',
+  name: 'Frozen Food - Aneka Pempek',
+  image: img11,
+  description: 'Aneka pempek frozen lengkap dengan cuko.',
+  groups: [
+    {
+      name: 'Pempek Satuan & Pack',
+      items: [
+        { name: 'Pempek Adaan (10pcs/pack)', price: 32500 },
+        { name: 'Pempek Kapal Selam (10pcs/pack)', price: 32500 },
+        { name: 'Pempek Kapal Selam (1pcs/pack)', price: 23500 },
+        { name: 'Pempek Lenjer Kecil (10pcs/pack)', price: 32500 },
+        { name: 'Pempek Lenjer Besar (2pcs/pack)', price: 32500 },
+        { name: 'Pempek Kulit (10pcs/pack)', price: 32500 },
+        { name: 'Pempek Crispy (10pcs/pack)', price: 32500 },
+      ]
+    },
+    {
+      name: 'Pempek Keju Lumer',
+      items: [
+        { name: 'Pempek Keju Lumer (5pcs/pack)', price: 29500 },
+        { name: 'Pempek Keju Lumer (10pcs/pack)', price: 39500 },
+      ]
+    },
+    {
+      name: 'Pempek Mix',
+      items: [
+        { name: 'Pempek Mix (10pcs/pack)', price: 32500 },
+        { name: 'Pempek Mix (20pcs/pack)', price: 65500 },
+        { name: 'Pempek Mix (50pcs/pack)', price: 121500 },
+      ]
+    }
+  ]
+},
 ];

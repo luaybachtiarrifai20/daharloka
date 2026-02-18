@@ -1,0 +1,72 @@
+/* Global Variables */
+:root {
+  --primary-color: #800000; /* Merah Marun */
+  --secondary-color: #FBC02D; /* Kuning (Darker for buttons/accents if needed) */
+  --accent-color: #1B5E20; /* Hijau Tua */
+  --background-color: #FFFDE7; /* Kuning Muda (Background) */
+  --text-color: #212121;
+  --white: #FFFFFF;
+  --font-main: 'Inter', sans-serif;
+  --font-display: 'Poppins', sans-serif;
+}
+
+/* Reset & Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+/* Container Utility */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Button Styles */
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: var(--primary-color);
+  color: var(--white);
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+  border: none;
+  font-weight: 600;
+}
+
+.btn:hover {
+  background-color: #E64A19;
+}
+
+.btn-secondary {
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+}
+
+.btn-secondary:hover {
+  background-color: #FFB300;
+}

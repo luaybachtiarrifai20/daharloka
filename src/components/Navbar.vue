@@ -2,7 +2,10 @@
   <nav class="navbar">
     <div class="container navbar-content">
       <div class="logo">
-        <router-link to="/">Daharloka</router-link>
+        <router-link to="/" class="logo-link">
+          <img src="@/assets/icon_daharloka.png" alt="Daharloka" class="logo-icon" />
+          <span>Daharloka</span>
+        </router-link>
       </div>
       <ul class="nav-links" :class="{ 'active': isMenuOpen }">
         <li><a href="#hero" @click.prevent="handleNav('#hero')">Beranda</a></li>
@@ -69,11 +72,21 @@ const scrollToSection = (hash) => {
   align-items: center;
 }
 
-.logo a {
+.logo-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   font-family: var(--font-display);
   font-size: 1.5rem;
   color: var(--primary-color);
   font-weight: 800;
+  text-decoration: none;
+}
+
+.logo-icon {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
 }
 
 .nav-links {

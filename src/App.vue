@@ -11,7 +11,11 @@
 
     <footer>
       <div class="container footer-content">
-        <p>&copy; 2026 Daharloka. All rights reserved.</p>
+        <div class="footer-logo">
+          <img src="@/assets/icon_daharloka.png" alt="Daharloka" class="logo-icon" />
+          <span>Daharloka</span>
+        </div>
+        <p>&copy; 2026. All rights reserved.</p>
       </div>
     </footer>
   </div>
@@ -29,9 +33,32 @@ const { toggleCart, totalItems } = useCart();
 footer {
   background-color: var(--text-color);
   color: var(--white);
-  padding: 20px 0;
+  padding: 40px 0;
   text-align: center;
   margin-top: 50px;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--white);
+}
+
+.logo-icon {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
 }
 
 .floating-cart {
